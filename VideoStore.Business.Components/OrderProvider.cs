@@ -47,6 +47,7 @@ namespace VideoStore.Business.Components
                         if (Status.bankInfoStatus == BankStatus.Failed)
                             throw new Exception("Insufficient balance");
                         pOrder.UpdateStockLevels();
+
                         PlaceDeliveryForOrder(pOrder);
                         lContainer.Orders.ApplyChanges(pOrder);
                         lContainer.SaveChanges();
