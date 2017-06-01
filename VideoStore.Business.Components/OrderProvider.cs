@@ -35,7 +35,7 @@ namespace VideoStore.Business.Components
                 {
                     try
                     {
-                        Status.bankInfoStatus = BankStatus.Transfered;
+                        Status.bankInfoStatus = BankStatus.Failed;
                         pOrder.OrderNumber = Guid.NewGuid();
 
                         Thread thread1 = new Thread(delegate ()
@@ -50,6 +50,7 @@ namespace VideoStore.Business.Components
                         pOrder.UpdateStockLevels();
 
                         PlaceDeliveryForOrder(pOrder);
+                        SendOrderPlacedConfirmation(pOrder);
                         lContainer.Orders.ApplyChanges(pOrder);
                         lContainer.SaveChanges();
                         lScope.Complete();
@@ -61,8 +62,7 @@ namespace VideoStore.Business.Components
                         throw;
                     }
                 }
-            }
-            SendOrderPlacedConfirmation(pOrder);
+            }    
         }
 
         
