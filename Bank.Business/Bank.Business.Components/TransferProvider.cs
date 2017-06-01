@@ -42,7 +42,6 @@ namespace Bank.Business.Components
                     Console.WriteLine("Error occured while transferring money:  " + lException.Message);
                     IBankNotificationService lService = BankNotificationServiceFactory.GetBankNotificationService(BankNotificationAddress);                    
                     lService.NotifyBankCompletion(pFromAcctNumber,BankInfoStatus.Failed);
-
                 }
             }
         }

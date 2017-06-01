@@ -35,6 +35,7 @@ namespace VideoStore.Business.Components
                 {
                     try
                     {
+                        Status.bankInfoStatus = BankStatus.Transfered;
                         pOrder.OrderNumber = Guid.NewGuid();
 
                         Thread thread1 = new Thread(delegate ()
